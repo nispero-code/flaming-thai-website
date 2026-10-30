@@ -169,9 +169,6 @@
   }
   .marquee__track img { width: clamp(30px, 2.8vw, 42px); height: auto; flex: none; }
   .marquee__track svg { width: 13px; height: 17px; flex: none; }
-  .marquee--dark { background: var(--orange); color: var(--cream); border: 0; }
-  .marquee--dark .marquee__track { padding: 9px 0 7px; animation-duration: 46s; }
-  .marquee--dark .marquee__track span { font-size: 14px; letter-spacing: .06em; }
   @keyframes slide { to { transform: translateX(-50%); } }
   @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
 
@@ -548,10 +545,6 @@
   </div>
 </section>
 
-<div class="marquee marquee--dark" aria-hidden="true">
-  <div class="marquee__track" id="marquee-dark"></div>
-</div>
-
 <section class="everything" aria-label="Flaming Thai, in real life">
   <h2 class="display">Awesome on<br>everything</h2>
   <div class="life" id="life">
@@ -641,7 +634,6 @@
     document.getElementById(id).innerHTML = set.repeat(4) + set.repeat(4);
   }
   fill('marquee-light', ['Squeeze it', 'Drizzle it', 'Dunk it', 'Drown it', 'Awesome on everything'], tiger);
-  fill('marquee-dark', ['Awesome on everything', 'Made in SA — Cape Town']);
 
   // Awesome on ___: each shuffle lands on a recipe and links to it
   const word = document.getElementById('shuffle-word');
