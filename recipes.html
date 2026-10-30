@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipes — Flaming Thai</title>
+<meta name="description" content="Recipes made with Flaming Thai sauces.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@75..100,400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+  .filters {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 14px;
+    padding: clamp(28px, 3vw, 40px) var(--gutter) 0;
+  }
+  .filters button {
+    border: 2.5px solid var(--red); border-radius: 999px;
+    padding: 13px 26px 12px;
+    color: var(--red);
+    font-weight: 800; font-size: 15px; letter-spacing: .08em; text-transform: uppercase;
+    transition: background .2s ease, color .2s ease;
+  }
+  .filters button:hover { background: var(--cream); }
+  .filters button[aria-pressed="true"] { background: var(--red); color: var(--paper); }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(40px, 4vw, 64px) clamp(20px, 2.6vw, 48px);
+    padding: clamp(64px, 6vw, 96px) var(--gutter) clamp(80px, 8vw, 120px);
+  }
+  .rcard { position: relative; color: var(--red); }
+  .rcard[hidden] { display: none; }
+  .rcard__img {
+    aspect-ratio: 1; overflow: hidden;
+    border: 3px solid var(--red); border-bottom-width: 8px; border-radius: 18px;
+    background: var(--tint);
+  }
+  .rcard__img > img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+  .rcard:hover .rcard__img > img { transform: scale(1.04); }
+  .rcard__bottle {
+    position: relative; height: 100%;
+    background: radial-gradient(circle at 50% 45%, #fffaf0 0%, var(--tint) 72%);
+  }
+  .rcard__bottle img { --h: 78%; transition: transform .35s ease; }
+  .rcard:hover .rcard__bottle img { transform: rotate(-4deg) translateY(-4px); }
+  .rcard__bottle small {
+    position: absolute; left: 12px; bottom: 10px;
+    font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    color: var(--c);
+  }
+  .sticker {
+    position: absolute; top: -24px; right: -10px; z-index: 1;
+    font-family: var(--display); text-transform: uppercase; font-size: clamp(22px, 2vw, 30px); line-height: 1;
+    padding: 10px 16px 8px;
+    background: var(--paper); color: var(--red);
+    border: 2.5px solid var(--red); border-radius: 10px;
+    box-shadow: 0 4px 0 var(--red);
+    transform: rotate(5deg);
+  }
+  .rcard:nth-child(3n) .sticker { transform: rotate(-6deg); }
+  .rcard h2 { margin-top: 18px; font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(24px, 2.2vw, 34px); line-height: .95; }
+  .rcard p { margin-top: 8px; font-size: 14px; font-weight: 600; color: var(--maroon); }
+
+  @media (max-width: 1080px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 760px) {
+    .filters { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 6px; }
+    .filters::-webkit-scrollbar { display: none; }
+    .filters button { flex: none; padding: 11px 18px 10px; font-size: 13px; }
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sticker { top: -16px; right: -4px; font-size: 18px; padding: 7px 10px 5px; }
+    .rcard__bottle small { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <nav class="nav" aria-label="Main">
+    <a href="index.html" class="wordmark" aria-label="Flaming Thai home"><i class="wordmark__icon" aria-hidden="true"></i>Flaming Thai</a>
+    <ul class="nav__links">
+      <li><a href="index.html#sauces">Sauces</a></li>
+      <li><a href="index.html#range">Shop all</a></li>
+      <li><a href="recipes.html" aria-current="page">Recipes</a></li>
+      <li><a href="index.html#where-to-buy">Stockists</a></li>
+    </ul>
+    <div class="nav__right">
+      <a href="index.html#range" class="btn">Shop sauces</a>
+      <button class="nav__menu" aria-expanded="false">Menu</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <h1 class="sr">Recipes</h1>
+  <div class="filters" role="group" aria-label="Filter recipes" id="filters"></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer id="stockists">
+  <div class="foot">
+    <div class="signup">
+      <h3>Newsletter</h3>
+      <p>New sauces, restocks and the odd recipe. No more than once a month.</p>
+      <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks';">
+        <label class="sr" for="email">Email</label>
+        <input id="email" type="email" placeholder="Your email" required>
+        <button class="btn" type="submit">Sign up</button>
+      </form>
+    </div>
+    <div>
+      <h3>Shop</h3>
+      <ul><li><a href="index.html#range">All sauces</a></li><li><a href="product.html?p=sriracha">Sriracha</a></li><li><a href="recipes.html">Recipes</a></li></ul>
+    </div>
+    <div>
+      <h3>Find us</h3>
+      <ul><li><a href="index.html#where-to-buy">Stockists</a></li><li><a href="#">Wholesale</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+    <div>
+      <h3>Follow</h3>
+      <ul><li><a href="https://www.instagram.com/flaming_thai/" target="_blank" rel="noopener">Instagram</a></li><li><a href="#">TikTok</a></li></ul>
+    </div>
+  </div>
+  <svg class="bigmark" viewBox="0 0 1200 214" role="img" aria-label="Flaming Thai">
+    <text x="0" y="206" textLength="1200" lengthAdjust="spacingAndGlyphs" font-family="Anton, Impact, sans-serif" font-size="268">FLAMING THAI</text>
+  </svg>
+  <div class="foot__base">
+    <span>Made by Malinco Foods (Pty) Ltd · <em>A Family of Flavour</em> · 11 Westlake Drive, Cape Town · <a href="https://www.malincofoods.co.za" target="_blank" rel="noopener">malincofoods.co.za</a></span>
+    <span>© 2026 Flaming Thai</span>
+  </div>
+</footer>
+
+<script src="products.js"></script>
+<script src="recipes.js"></script>
+<script src="site.js"></script>
+<script>
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const product = slug => PRODUCTS.find(p => p.slug === slug);
+
+  document.getElementById('grid').innerHTML = RECIPES.map(r => {
+    const p = product(r.sauce);
+    const img = r.img
+      ? `<img src="${r.img}" alt="${esc(r.alt)}">`
+      : `<div class="rcard__bottle"><img class="cutout" src="assets/bottles/${p.slug}.png" alt=""><small>Photo to come</small></div>`;
+    return `
+      <a class="rcard" href="recipe.html?r=${r.slug}" data-cat="${esc(r.category)}" style="--tint:${p.tint};--c:${p.colour}">
+        ${r.sticker ? `<span class="sticker">${esc(r.sticker)}</span>` : ''}
+        <div class="rcard__img">${img}</div>
+        <h2>${esc(r.title)}</h2>
+        <p>${esc(p.name)} · ${r.time}</p>
+      </a>`;
+  }).join('');
+
+  // Filters: only categories that have recipes; ?cat= preselects one.
+  const cats = ['All', ...CATEGORIES.filter(c => RECIPES.some(r => r.category === c))];
+  const filters = document.getElementById('filters');
+  filters.innerHTML = cats.map(c => `<button type="button" data-cat="${esc(c)}">${esc(c)}</button>`).join('');
+  const pick = cat => {
+    filters.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.cat === cat));
+    document.querySelectorAll('.rcard').forEach(card => { card.hidden = cat !== 'All' && card.dataset.cat !== cat; });
+  };
+  filters.addEventListener('click', e => { if (e.target.dataset.cat) pick(e.target.dataset.cat); });
+  const wanted = new URLSearchParams(location.search).get('cat');
+  pick(cats.includes(wanted) ? wanted : 'All');
+</script>
+</body>
+</html>

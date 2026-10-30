@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipe — Flaming Thai</title>
+<meta name="description" content="A recipe made with Flaming Thai sauce.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@75..100,400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* ---------- Top split ---------- */
+  .rhero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border-top: 2px solid var(--c); }
+  .rhero__text {
+    display: flex; flex-direction: column; justify-content: space-between; gap: 48px;
+    padding: clamp(32px, 4vw, 60px) clamp(24px, 4vw, 80px);
+    color: var(--c);
+  }
+  .back { display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); text-transform: uppercase; font-size: 20px; letter-spacing: .02em; }
+  .back:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .rhero h1 { margin-top: 26px; font-size: clamp(48px, 5.4vw, 92px); }
+  .intro { margin-top: 22px; font-stretch: 80%; font-size: clamp(18px, 1.4vw, 21px); line-height: 1.42; max-width: 32em; }
+  .rhero .tbc { margin-top: 18px; }
+
+  .uses {
+    border: 2.5px solid var(--c); border-radius: 24px;
+    padding: clamp(20px, 2.4vw, 32px);
+  }
+  .uses h2 { font-size: 22px; letter-spacing: .03em; }
+  .uses__row { display: flex; align-items: center; gap: clamp(20px, 2.6vw, 36px); margin-top: 18px; }
+  .uses__circle {
+    flex: none; width: clamp(130px, 12vw, 180px); aspect-ratio: 1; border-radius: 50%;
+    position: relative; border: 2.5px solid var(--c); overflow: hidden;
+    background: radial-gradient(circle at 50% 42%, #fffaf0 0%, var(--tint) 75%);
+  }
+  .uses__circle img { --h: 86%; top: 12%; }
+  .uses h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(26px, 2.4vw, 36px); line-height: .95; }
+  .uses p { margin-top: 8px; font-stretch: 80%; font-size: 19px; }
+  .pill {
+    display: inline-block; margin-top: 16px;
+    padding: 14px 26px 12px; border-radius: 999px;
+    background: var(--c); color: var(--paper);
+    font-weight: 800; font-size: 15px; letter-spacing: .08em; text-transform: uppercase;
+    transition: transform .15s ease;
+  }
+  .pill:hover { transform: translateY(-2px); }
+
+  .rhero__media { background: var(--c); padding: clamp(20px, 2.4vw, 34px); color: var(--paper); }
+  .frame { aspect-ratio: 1; border: 6px solid var(--paper); border-radius: 18px; overflow: hidden; background: var(--tint); }
+  .frame > img { width: 100%; height: 100%; object-fit: cover; }
+  .frame .placeholder {
+    height: 100%; padding: clamp(20px, 3vw, 40px);
+    display: flex; flex-direction: column; justify-content: flex-end; gap: 10px;
+    color: var(--c); font-size: 16px; line-height: 1.5;
+    background: radial-gradient(circle at 50% 35%, #fffaf0 0%, var(--tint) 70%);
+  }
+  .frame .placeholder b { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: .04em; font-size: 22px; }
+  .stats {
+    display: flex; justify-content: center;
+    margin-top: clamp(20px, 2.4vw, 32px);
+    border-top: 2px solid var(--paper); border-bottom: 2px solid var(--paper);
+  }
+  .stats div { flex: 1; text-align: center; padding: 18px 12px 16px; }
+  .stats div + div { border-left: 2px solid var(--paper); }
+  .stats dt { font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: 15px; }
+  .stats dd { font-family: var(--display); font-size: 30px; line-height: 1.1; }
+
+  /* ---------- Ingredients / instructions ---------- */
+  .method {
+    position: relative;
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    border-top: 2px solid var(--c); border-bottom: 2px solid var(--c);
+    color: var(--c);
+  }
+  .method::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 6px; margin-left: -3px; background: var(--c); }
+  .badge {
+    position: absolute; left: 50%; top: clamp(56px, 6vw, 88px);
+    width: 112px; aspect-ratio: 1; margin-left: -56px; border-radius: 50%;
+    background: var(--paper); border: 3px solid var(--c);
+    display: grid; place-items: center;
+  }
+  .badge i {
+    width: 70%; aspect-ratio: 1; background: var(--c);
+    -webkit-mask: url(assets/tiger-red.png) center / contain no-repeat;
+            mask: url(assets/tiger-red.png) center / contain no-repeat;
+  }
+  .method > section { padding: clamp(56px, 6vw, 96px) clamp(24px, 6vw, 104px) clamp(64px, 7vw, 110px) clamp(24px, 6.5vw, 130px); }
+  .method > section + section { padding-left: clamp(24px, 6vw, 96px); padding-right: clamp(24px, 6.5vw, 130px); }
+  .method h2 { font-size: clamp(52px, 5.4vw, 90px); }
+  .method h3 { margin-top: 34px; font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(24px, 2.2vw, 34px); line-height: 1; }
+  .method ul { list-style: none; margin-top: 14px; }
+  .method li {
+    position: relative; padding-left: 26px; margin-top: 12px;
+    font-stretch: 80%; font-size: clamp(18px, 1.4vw, 21px); line-height: 1.45;
+  }
+  .method li::before { content: ""; position: absolute; left: 4px; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  .method .tbc { margin-top: 26px; }
+
+  /* ---------- More recipes ---------- */
+  .more { padding: clamp(64px, 7vw, 110px) var(--gutter); }
+  .more > h2 { font-size: clamp(40px, 4.2vw, 68px); color: var(--red); }
+  .more__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(20px, 2.6vw, 48px); margin-top: 32px; }
+  .mcard { color: var(--red); }
+  .mcard__img {
+    aspect-ratio: 1; overflow: hidden;
+    border: 3px solid var(--red); border-bottom-width: 8px; border-radius: 18px;
+    display: block; position: relative;
+    background: radial-gradient(circle at 50% 45%, #fffaf0 0%, var(--ct) 72%);
+  }
+  .mcard__img > img:not(.cutout) { width: 100%; height: 100%; object-fit: cover; }
+  .mcard__img > img.cutout { --h: 78%; }
+  .mcard__cat { display: inline-block; margin-top: 18px; font-size: 15px; text-transform: uppercase; text-decoration: underline; text-underline-offset: 3px; }
+  .mcard h3 { margin-top: 12px; font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(22px, 2vw, 30px); line-height: .95; }
+
+  @media (max-width: 900px) {
+    .rhero { grid-template-columns: 1fr; }
+    .rhero__media { order: -1; }
+    .method { grid-template-columns: 1fr; }
+    .method::before { display: none; }
+    .badge { display: none; }
+    .method > section + section { border-top: 2px solid var(--c); }
+    .method > section, .method > section + section { padding: 48px var(--gutter); }
+    .more__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 520px) {
+    .uses__row { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <nav class="nav" aria-label="Main">
+    <a href="index.html" class="wordmark" aria-label="Flaming Thai home"><i class="wordmark__icon" aria-hidden="true"></i>Flaming Thai</a>
+    <ul class="nav__links">
+      <li><a href="index.html#sauces">Sauces</a></li>
+      <li><a href="index.html#range">Shop all</a></li>
+      <li><a href="recipes.html" aria-current="page">Recipes</a></li>
+      <li><a href="index.html#where-to-buy">Stockists</a></li>
+    </ul>
+    <div class="nav__right">
+      <a href="index.html#range" class="btn">Shop sauces</a>
+      <button class="nav__menu" aria-expanded="false">Menu</button>
+    </div>
+  </nav>
+</header>
+
+<main id="recipe"></main>
+
+<footer id="stockists">
+  <div class="foot">
+    <div class="signup">
+      <h3>Newsletter</h3>
+      <p>New sauces, restocks and the odd recipe. No more than once a month.</p>
+      <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks';">
+        <label class="sr" for="email">Email</label>
+        <input id="email" type="email" placeholder="Your email" required>
+        <button class="btn" type="submit">Sign up</button>
+      </form>
+    </div>
+    <div>
+      <h3>Shop</h3>
+      <ul><li><a href="index.html#range">All sauces</a></li><li><a href="product.html?p=sriracha">Sriracha</a></li><li><a href="recipes.html">Recipes</a></li></ul>
+    </div>
+    <div>
+      <h3>Find us</h3>
+      <ul><li><a href="index.html#where-to-buy">Stockists</a></li><li><a href="#">Wholesale</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+    <div>
+      <h3>Follow</h3>
+      <ul><li><a href="https://www.instagram.com/flaming_thai/" target="_blank" rel="noopener">Instagram</a></li><li><a href="#">TikTok</a></li></ul>
+    </div>
+  </div>
+  <svg class="bigmark" viewBox="0 0 1200 214" role="img" aria-label="Flaming Thai">
+    <text x="0" y="206" textLength="1200" lengthAdjust="spacingAndGlyphs" font-family="Anton, Impact, sans-serif" font-size="268">FLAMING THAI</text>
+  </svg>
+  <div class="foot__base">
+    <span>Made by Malinco Foods (Pty) Ltd · <em>A Family of Flavour</em> · 11 Westlake Drive, Cape Town · <a href="https://www.malincofoods.co.za" target="_blank" rel="noopener">malincofoods.co.za</a></span>
+    <span>© 2026 Flaming Thai</span>
+  </div>
+</footer>
+
+<script src="products.js"></script>
+<script src="recipes.js"></script>
+<script src="site.js"></script>
+<script>
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const product = slug => PRODUCTS.find(p => p.slug === slug);
+  const slug = new URLSearchParams(location.search).get('r');
+  const r = RECIPES.find(x => x.slug === slug) || RECIPES[0];
+  const p = product(r.sauce);
+
+  document.title = `${r.title} — Flaming Thai`;
+  document.documentElement.style.setProperty('--c', p.colour);
+  document.documentElement.style.setProperty('--tint', p.tint);
+
+  const photo = r.img
+    ? `<img src="${r.img}" alt="${esc(r.alt)}">`
+    : `<div class="placeholder"><b>Image needed</b>${esc(r.brief)}</div>`;
+
+  const stats = [['Time', r.time], r.serves && ['Serves', r.serves]].filter(Boolean)
+    .map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('');
+
+  const ingredients = r.ingredients
+    ? r.ingredients.map(g => `<h3>${esc(g.group)}</h3><ul>${g.items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>`).join('')
+    : '<span class="tbc">Ingredients to come</span>';
+  const steps = r.steps
+    ? r.steps.map((s, i) => `<h3>${i + 1}. ${esc(s.head)}:</h3><ul><li>${esc(s.text)}</li></ul>`).join('')
+    : '<span class="tbc">Method to come</span>';
+
+  // Same sauce first, then the rest, four in total.
+  const others = RECIPES.filter(x => x !== r).sort((a, b) => (b.sauce === r.sauce) - (a.sauce === r.sauce)).slice(0, 4);
+  const more = others.map(x => {
+    const xp = product(x.sauce);
+    return `
+      <div class="mcard">
+        <a href="recipe.html?r=${x.slug}" class="mcard__img" style="--ct:${xp.tint}">${x.img
+          ? `<img src="${x.img}" alt="${esc(x.alt)}">`
+          : `<img class="cutout" src="assets/bottles/${xp.slug}.png" alt="">`}</a>
+        <a class="mcard__cat" href="recipes.html?cat=${encodeURIComponent(x.category)}">${esc(x.category)}</a>
+        <a href="recipe.html?r=${x.slug}"><h3>${esc(x.title)}</h3></a>
+      </div>`;
+  }).join('');
+
+  document.getElementById('recipe').innerHTML = `
+    <section class="rhero">
+      <div class="rhero__text">
+        <div>
+          <a class="back" href="recipes.html"><span aria-hidden="true">←</span> Back to recipes</a>
+          <h1 class="display">${esc(r.title)}</h1>
+          ${r.intro ? `<p class="intro">${esc(r.intro)}</p>` : ''}
+          ${r.draft ? '<span class="tbc">Draft recipe — to be confirmed</span>' : ''}
+        </div>
+        <div class="uses">
+          <h2 class="display">This recipe uses</h2>
+          <div class="uses__row">
+            <a class="uses__circle" href="product.html?p=${p.slug}"><img class="cutout" src="assets/bottles/${p.slug}.png" alt="Flaming Thai ${esc(p.name)} bottle"></a>
+            <div>
+              <h3>${esc(p.name)}</h3>
+              <p>450 ml squeeze bottle</p>
+              <a class="pill" href="product.html?p=${p.slug}">View the sauce</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rhero__media">
+        <div class="frame">${photo}</div>
+        <dl class="stats">${stats}</dl>
+      </div>
+    </section>
+
+    <div class="method">
+      <div class="badge" aria-hidden="true"><i></i></div>
+      <section aria-labelledby="ing-title">
+        <h2 class="display" id="ing-title">Ingredients</h2>
+        ${ingredients}
+      </section>
+      <section aria-labelledby="steps-title">
+        <h2 class="display" id="steps-title">Instructions</h2>
+        ${steps}
+      </section>
+    </div>
+
+    <section class="more" aria-labelledby="more-title">
+      <h2 class="display" id="more-title">You might also like</h2>
+      <div class="more__grid">${more}</div>
+    </section>`;
+</script>
+</body>
+</html>

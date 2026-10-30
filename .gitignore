@@ -1,0 +1,11 @@
+# Private or working files that must not be published
+Documents/
+versions/
+Flaming Thai Packshots/
+pdp shots/
+Screenshot *.png
+d7018133e_generated_image.jpeg
+font-test/
+font-test.html
+.claude/
+.DS_Store
