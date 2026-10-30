@@ -169,9 +169,6 @@
   }
   .marquee__track img { width: clamp(30px, 2.8vw, 42px); height: auto; flex: none; }
   .marquee__track svg { width: 13px; height: 17px; flex: none; }
-  .marquee--dark { background: var(--orange); color: var(--cream); border: 0; }
-  .marquee--dark .marquee__track { padding: 9px 0 7px; animation-duration: 46s; }
-  .marquee--dark .marquee__track span { font-size: 14px; letter-spacing: .06em; }
   @keyframes slide { to { transform: translateX(-50%); } }
   @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
 
@@ -538,14 +535,22 @@
   </div>
 </section>
 
-<section class="range" id="range" aria-label="All sauces">
-  <h2 class="display">The full range</h2>
-  <div class="range__grid" id="range-grid"></div>
+<section class="tiktok" aria-label="Flaming Thai on TikTok">
+  <!-- To embed a video, put its TikTok video ID in data-video (the number at the end of the video URL). -->
+  <div class="tiktok__rail">
+    <button type="button" class="tiktok__arrow tiktok__arrow--prev" data-rail="-1" aria-label="Previous videos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+    <div class="rail" id="rail">
+    <a class="tt" href="https://www.tiktok.com/@pleasure_98/video/7684325292416011527" target="_blank" rel="noopener" data-video="7684325292416011527"><img src="assets/tiktok/ugc-pleasure-dip.jpg" alt="TikTok by @pleasure_98: Sriracha Mayo squeezed into a dip pot beside fries and glazed chicken" loading="lazy"><span>@pleasure_98</span></a>
+    <a class="tt" href="https://www.tiktok.com/@bukeka_mazibuko/video/7685103588741319944" target="_blank" rel="noopener" data-video="7685103588741319944"><img src="assets/tiktok/ugc-bukeka-ribs.jpg" alt="TikTok by @bukeka_mazibuko: Extra Hot Sriracha Mayo squeezed over ribs" loading="lazy"><span>@bukeka_mazibuko</span></a>
+    <a class="tt" href="https://www.tiktok.com/@temiecash_/video/7664287841639353620" target="_blank" rel="noopener" data-video="7664287841639353620"><img src="assets/tiktok/ugc-temiecash-box.jpg" alt="TikTok by @temiecash_: Unboxing Flaming Thai sauces, including Ginger &amp; Soy Sweet Chilli" loading="lazy"><span>@temiecash_</span></a>
+    <a class="tt" href="https://www.tiktok.com/@cookingwith_gaylin/video/7702165168880454920" target="_blank" rel="noopener" data-video="7702165168880454920"><img src="assets/tiktok/ugc-gaylin.jpg" alt="TikTok by @cookingwith_gaylin: Eating a taco with a bottle of Flaming Thai on the table" loading="lazy"><span>@cookingwith_gaylin</span></a>
+    <a class="tt" href="https://www.tiktok.com/@bukeka_mazibuko/video/7687711106936081671" target="_blank" rel="noopener" data-video="7687711106936081671"><img src="assets/tiktok/ugc-bukeka-gochujang.jpg" alt="TikTok by @bukeka_mazibuko: Holding up Flaming Thai Korean Gochujang" loading="lazy"><span>@bukeka_mazibuko</span></a>
+    <a class="tt" href="https://www.tiktok.com/@bukeka_mazibuko/video/7643072449537395986" target="_blank" rel="noopener" data-video="7643072449537395986"><img src="assets/tiktok/ugc-bukeka-cabbage.jpg" alt="TikTok by @bukeka_mazibuko: Drizzling Gochujang over red cabbage" loading="lazy"><span>@bukeka_mazibuko</span></a>
+    <a class="tt" href="https://www.tiktok.com/@bukeka_mazibuko/video/7639476707937881362" target="_blank" rel="noopener" data-video="7639476707937881362"><img src="assets/tiktok/ugc-bukeka-mayo.jpg" alt="TikTok by @bukeka_mazibuko: Holding up Extra Hot Sriracha Mayo" loading="lazy"><span>@bukeka_mazibuko</span></a>
+    </div>
+    <button type="button" class="tiktok__arrow tiktok__arrow--next" data-rail="1" aria-label="More videos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+  </div>
 </section>
-
-<div class="marquee marquee--dark" aria-hidden="true">
-  <div class="marquee__track" id="marquee-dark"></div>
-</div>
 
 <section class="everything" aria-label="Flaming Thai, in real life">
   <h2 class="display">Awesome on<br>everything</h2>
@@ -569,25 +574,9 @@
   </div>
 </section>
 
-<section class="tiktok" aria-labelledby="tiktok-title">
-  <div class="tiktok__head">
-    <h2 class="display" id="tiktok-title">On TikTok</h2>
-    <p>Tag #AwesomeOnEverything to show us yours.</p>
-  </div>
-  <!-- To embed a video, put its TikTok video ID in data-video (the number at the end of the video URL). -->
-  <div class="tiktok__rail">
-    <button type="button" class="tiktok__arrow tiktok__arrow--prev" data-rail="-1" aria-label="Previous videos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
-    <div class="rail" id="rail">
-    <a class="tt" href="https://www.tiktok.com/@pleasure_98/video/7684325292416011527" target="_blank" rel="noopener" data-video="7684325292416011527"><img src="assets/tiktok/ugc-pleasure-dip.jpg" alt="TikTok by @pleasure_98: Sriracha Mayo squeezed into a dip pot beside fries and glazed chicken" loading="lazy"><span>@pleasure_98</span></a>
-    <a class="tt" href="https://www.tiktok.com/@bukeka_mazibuko/video/7685103588741319944" target="_blank" rel="noopener" data-video="7685103588741319944"><img src="assets/tiktok/ugc-bukeka-ribs.jpg" alt="TikTok by @bukeka_mazibuko: Extra Hot Sriracha Mayo squeezed over ribs" loading="lazy"><span>@bukeka_mazibuko</span></a>
-    <a class="tt" href="https://www.tiktok.com/@temiecash_/video/7664287841639353620" target="_blank" rel="noopener" data-video="7664287841639353620"><img src="assets/tiktok/ugc-temiecash-box.jpg" alt="TikTok by @temiecash_: Unboxing Flaming Thai sauces, including Ginger &amp; Soy Sweet Chilli" loading="lazy"><span>@temiecash_</span></a>
-    <a class="tt" href="https://www.tiktok.com/@cookingwith_gaylin/video/7702165168880454920" target="_blank" rel="noopener" data-video="7702165168880454920"><img src="assets/tiktok/ugc-gaylin.jpg" alt="TikTok by @cookingwith_gaylin: Eating a taco with a bottle of Flaming Thai on the table" loading="lazy"><span>@cookingwith_gaylin</span></a>
-    <a class="tt" href="https://www.tiktok.com/@bukeka_mazibuko/video/7687711106936081671" target="_blank" rel="noopener" data-video="7687711106936081671"><img src="assets/tiktok/ugc-bukeka-gochujang.jpg" alt="TikTok by @bukeka_mazibuko: Holding up Flaming Thai Korean Gochujang" loading="lazy"><span>@bukeka_mazibuko</span></a>
-    <a class="tt" href="https://www.tiktok.com/@bukeka_mazibuko/video/7643072449537395986" target="_blank" rel="noopener" data-video="7643072449537395986"><img src="assets/tiktok/ugc-bukeka-cabbage.jpg" alt="TikTok by @bukeka_mazibuko: Drizzling Gochujang over red cabbage" loading="lazy"><span>@bukeka_mazibuko</span></a>
-    <a class="tt" href="https://www.tiktok.com/@bukeka_mazibuko/video/7639476707937881362" target="_blank" rel="noopener" data-video="7639476707937881362"><img src="assets/tiktok/ugc-bukeka-mayo.jpg" alt="TikTok by @bukeka_mazibuko: Holding up Extra Hot Sriracha Mayo" loading="lazy"><span>@bukeka_mazibuko</span></a>
-    </div>
-    <button type="button" class="tiktok__arrow tiktok__arrow--next" data-rail="1" aria-label="More videos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
-  </div>
+<section class="range" id="range" aria-label="All sauces">
+  <h2 class="display">The full range</h2>
+  <div class="range__grid" id="range-grid"></div>
 </section>
 
 <section class="shuffle" aria-labelledby="shuffle-title">
@@ -652,7 +641,6 @@
     document.getElementById(id).innerHTML = set.repeat(4) + set.repeat(4);
   }
   fill('marquee-light', ['Squeeze it', 'Drizzle it', 'Dunk it', 'Drown it', 'Awesome on everything'], tiger);
-  fill('marquee-dark', ['Awesome on everything', 'Made in SA — Cape Town']);
 
   // Awesome on ___: each shuffle lands on a recipe and links to it
   const word = document.getElementById('shuffle-word');
